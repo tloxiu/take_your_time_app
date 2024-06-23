@@ -45,7 +45,7 @@ class _TodoListPageState extends State<TodoListPage> {
             child: Row(
               children: [
                 Icon(Icons.message_sharp),
-                SizedBox(width: 10), // Add space between icons
+                SizedBox(width: 10),
                 Icon(Icons.person_2_outlined),
               ],
             ),
@@ -87,28 +87,49 @@ class _TodoListPageState extends State<TodoListPage> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: const Text("Add a new task"),
+                          title: const Text(
+                            "Add a new task",
+                            style: TextStyle(color: Colors.white),
+                          ),
                           content: TextField(
                             controller: taskController,
                             decoration: const InputDecoration(
-                              label: Text('Task'),
+                              label: Text(
+                                'Task',
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                           ),
                           actions: [
                             TextButton(
                               onPressed: () {
                                 Navigator.pop(context);
+                                taskController.clear();
                               },
-                              child: const Text('Cancel'),
+                              child: const Text(
+                                'Cancel',
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                             TextButton(
                               onPressed: () {
                                 addTask(taskController.text);
                                 Navigator.pop(context);
+                                taskController.clear();
                               },
-                              child: const Text('OK'),
+                              child: const Text(
+                                'OK',
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                           ],
+                          backgroundColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(0),
+                            side: const BorderSide(
+                                color: Colors.white,
+                                width: 1.5), 
+                          ),
                         );
                       },
                     );
